@@ -23,6 +23,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 // Middleware
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // Parse JSON bodies
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
