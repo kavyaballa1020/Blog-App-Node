@@ -21,6 +21,9 @@
         <li class="post-item">
           <article class="post">
             <h2 class="post-title"><%= post.title %></h2>
+            <% if (post.image) { %>
+              <img src="<%= post.image %>" alt="Post Image" class="post-image">
+            <% } %>
             <p class="post-content"><%= post.content %></p>
             <div class="post-actions">
               <a href="/blog/edit/<%= post._id %>" class="action-link edit-link">Edit</a>
