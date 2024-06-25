@@ -1,35 +1,36 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const methodOverride = require('method-override');
+const session = require('express-session');
+const dotenv = require('dotenv');
+const authRoutes = require('./routes/auth');
+const blogRoutes = require('./routes/blog');
+
+dotenv.config();
+
 const app = express();
 
-// Connect to MongoDB Atlas
-mongoose.connect('mongodb+srv://220101120156:Nanna1432@blogapp.84tuqrq.mongodb.net/Blog?retryWrites=true&w=majority&appName=BlogApp', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(() => {
-    console.log('MongoDB connected');
-}).catch(err => {
-    console.error('Connection error', err);
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.log(err));
+
+app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: true }));
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use('/auth', authRoutes);
+app.use('/blog', blogRoutes);
+
+app.get('/', (req, res) => {
+  res.redirect('/auth/login');
 });
 
-// Middleware
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(methodOverride('_method'));
-app.use(express.static('public'));
-
-// Set up EJS
-app.set('view engine', 'ejs');
-
-// Routes
-const indexRoutes = require('./routes/index');
-const postRoutes = require('./routes/posts');
-app.use('/', indexRoutes);
-app.use('/posts', postRoutes);
-
-// Start server
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

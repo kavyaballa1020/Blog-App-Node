@@ -62,3 +62,6 @@ typings
 
 # Windows image file caches
 Thumbs.db
+
+
+.env
