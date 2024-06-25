@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
   <link rel="stylesheet" href="/stylesheets/blog.css">
   <title>My Awesome Blog</title>
 </head>
 <body>
   <header class="header">
-    <h1 class="main-title">My Awesome Blog</h1>
+    <h1 class="main-title">My Awesome Blog <i class="fas fa-blog"></i></h1>
     <nav class="nav">
-      <a href="/blog/create" class="nav-link create-link">Create New Post</a>
-      <a href="/auth/logout" class="nav-link logout-link">Logout</a>
+      <a href="/blog/create" class="nav-link create-link"><i class="fas fa-plus"></i> Create New Post</a>
+      <a href="/auth/logout" class="nav-link logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </nav>
   </header>
 
@@ -21,7 +21,7 @@
       <% posts.forEach(post => { %>
         <li class="post-item">
           <article class="post">
-            <h2 class="post-title"><%= post.title %></h2>
+            <h2 class="post-title"><%= post.title %> <i class="fas fa-feather-alt"></i></h2>
             <% if (post.image) { %>
               <img src="<%= post.image %>" alt="Post Image" class="post-image">
             <% } %>
@@ -30,9 +30,9 @@
               <span class="post-date">Posted on <%= post.createdAt.toDateString() %></span>
             </div>
             <div class="post-actions">
-              <a href="/blog/edit/<%= post._id %>" class="action-link edit-link">Edit</a>
+              <a href="/blog/edit/<%= post._id %>" class="action-link edit-link"><i class="fas fa-edit"></i> Edit</a>
               <form action="/blog/delete/<%= post._id %>" method="post" class="delete-form">
-                <button type="submit" class="action-button delete-button">Delete</button>
+                <button type="submit" class="action-button delete-button"><i class="fas fa-trash"></i> Delete</button>
               </form>
             </div>
           </article>
@@ -41,7 +41,8 @@
     </ul>
   </main>
   <footer class="footer">
-    <p>&copy; 2024 My Awesome Blog. All rights reserved.</p>
+    <p>&copy; 2024 My Awesome Blog. All rights reserved. <i class="fas fa-heart"></i></p>
   </footer>
 </body>
 </html>
+
