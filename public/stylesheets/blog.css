@@ -8,6 +8,7 @@
   --scrollbar-thumb-color: #264962;
   --scrollbar-track-color: #f4f4f4;
 }
+
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -30,7 +31,6 @@
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
 }
-
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -89,14 +89,12 @@ body {
 .post-list {
   list-style-type: none;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
-  justify-content: space-between;
 }
 
 .post-item {
-  flex-basis: calc(33.333% - 1rem);
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -178,6 +176,7 @@ body {
 .delete-form {
   display: inline;
 }
+
 .footer {
   text-align: center;
   margin-top: 2rem;
@@ -186,6 +185,7 @@ body {
   color: #ecf0f1;
   border-radius: 8px;
 }
+
 @media (max-width: 1024px) {
   .post-item {
     flex-basis: calc(50% - 0.75rem);
