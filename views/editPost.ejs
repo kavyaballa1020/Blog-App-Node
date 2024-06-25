@@ -13,7 +13,7 @@
     </header>
     
     <main class="main-content">
-      <form class="post-form" action="/blog/edit/<%= post._id %>" method="post">
+      <form class="post-form" action="/blog/edit/<%= post._id %>" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label for="title" class="form-label">Title</label>
           <input type="text" id="title" name="title" class="form-input" placeholder="Enter post title" value="<%= post.title %>" required>
@@ -21,6 +21,13 @@
         <div class="form-group">
           <label for="content" class="form-label">Content</label>
           <textarea id="content" name="content" class="form-textarea" placeholder="Write your post content here" required><%= post.content %></textarea>
+        </div>
+        <div class="form-group">
+          <label for="image" class="form-label">Image</label>
+          <input type="file" id="image" name="image" class="form-input">
+          <% if (post.image) { %>
+            <img src="<%= post.image %>" alt="Post Image" style="width: 100px; height: auto;">
+          <% } %>
         </div>
         <button type="submit" class="submit-btn">Update Post</button>
       </form>
