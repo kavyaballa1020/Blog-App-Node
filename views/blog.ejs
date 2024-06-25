@@ -28,7 +28,6 @@
             <p class="post-content"><%= post.content %></p>
             <div class="post-meta">
               <span class="post-date">Posted on <%= post.createdAt.toDateString() %></span>
-              <span class="post-author">by <%= post.author.username %></span>
             </div>
             <div class="post-actions">
               <a href="/blog/edit/<%= post._id %>" class="action-link edit-link">Edit</a>
