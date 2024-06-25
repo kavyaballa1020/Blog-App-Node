@@ -1,111 +1,143 @@
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-  }
-  
-  .header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .main-title {
-    margin: 0;
-    font-size: 2rem;
-  }
-  
-  .nav {
-    margin-top: 1rem;
-  }
-  
-  .nav-link {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .create-link {
-    background-color: #4CAF50;
-  }
-  
-  .logout-link {
-    background-color: #f44336;
-  }
-  
-  .nav-link:hover {
-    background-color: #555;
-  }
-  
-  .post-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .post-item {
-    background-color: #fff;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .post-title {
-    margin-top: 0;
-    color: #2c3e50;
-  }
-  
-  .post-content {
-    margin-bottom: 1rem;
-  }
-  
-  .post-actions {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  
-  .action-link, .action-button {
-    padding: 0.5rem 1rem;
-    margin-right: 0.5rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .edit-link {
-    background-color: #3498db;
-    color: #fff;
-  }
-  
-  .delete-button {
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .action-link:hover, .action-button:hover {
-    opacity: 0.8;
-  }
-  
-  .delete-form {
-    display: inline;
-  }
-  .post-image {
-    width: 100%;
-    height: auto;
-    max-width: 500px;
-    display: block;
-    margin: 10px 0;
-  }
-  
+  font-family: 'Roboto', Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.header {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.main-title {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.nav {
+  margin-top: 1rem;
+}
+
+.nav-link {
+  color: #ecf0f1;
+  text-decoration: none;
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-weight: 400;
+}
+
+.create-link {
+  background-color: #27ae60;
+}
+
+.logout-link {
+  background-color: #e74c3c;
+}
+
+.nav-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.post-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.post-item {
+  background-color: #fff;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.post-item:hover {
+  transform: translateY(-5px);
+}
+
+.post-title {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.post-content {
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.post-meta {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.action-link, .action-button {
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  font-weight: 400;
+}
+
+.edit-link {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.action-link:hover, .action-button:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+.delete-form {
+  display: inline;
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  display: block;
+  margin: 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  border-radius: 8px;
+}

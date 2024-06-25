@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap">
   <link rel="stylesheet" href="/stylesheets/blog.css">
-  <title>Blog</title>
+  <title>My Awesome Blog</title>
 </head>
 <body>
   <header class="header">
-    <h1 class="main-title">Blog</h1>
+    <h1 class="main-title">My Awesome Blog</h1>
     <nav class="nav">
       <a href="/blog/create" class="nav-link create-link">Create New Post</a>
       <a href="/auth/logout" class="nav-link logout-link">Logout</a>
@@ -25,6 +26,10 @@
               <img src="<%= post.image %>" alt="Post Image" class="post-image">
             <% } %>
             <p class="post-content"><%= post.content %></p>
+            <div class="post-meta">
+              <span class="post-date">Posted on <%= post.createdAt.toDateString() %></span>
+              <span class="post-author">by <%= post.author.username %></span>
+            </div>
             <div class="post-actions">
               <a href="/blog/edit/<%= post._id %>" class="action-link edit-link">Edit</a>
               <form action="/blog/delete/<%= post._id %>" method="post" class="delete-form">
@@ -36,5 +41,8 @@
       <% }) %>
     </ul>
   </main>
+  <footer class="footer">
+    <p>&copy; 2024 My Awesome Blog. All rights reserved.</p>
+  </footer>
 </body>
 </html>
