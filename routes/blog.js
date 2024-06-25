@@ -1,7 +1,21 @@
 const express = require('express');
+const multer = require('multer');
+const path = require('path');
 const Post = require('../models/post');
 const User = require('../models/user');
 const router = express.Router();
+
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/uploads');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ storage: storage });
 
 router.use((req, res, next) => {
   if (!req.session.userId) {
@@ -19,9 +33,14 @@ router.get('/create', (req, res) => {
   res.render('createPost');
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create', upload.single('image'), async (req, res) => {
   const { title, content } = req.body;
-  const post = new Post({ title, content, author: req.session.userId });
+  const post = new Post({
+    title,
+    content,
+    author: req.session.userId,
+    image: req.file ? `/uploads/${req.file.filename}` : null
+  });
   await post.save();
   res.redirect('/blog');
 });
@@ -31,9 +50,13 @@ router.get('/edit/:id', async (req, res) => {
   res.render('editPost', { post });
 });
 
-router.post('/edit/:id', async (req, res) => {
+router.post('/edit/:id', upload.single('image'), async (req, res) => {
   const { title, content } = req.body;
-  await Post.findByIdAndUpdate(req.params.id, { title, content });
+  const updateData = { title, content };
+  if (req.file) {
+    updateData.image = `/uploads/${req.file.filename}`;
+  }
+  await Post.findByIdAndUpdate(req.params.id, updateData);
   res.redirect('/blog');
 });
 
