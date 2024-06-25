@@ -3,15 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/edit-post.css">
   <title>Edit Post</title>
 </head>
 <body>
-  <h1>Edit Post</h1>
-  <form action="/blog/edit/<%= post._id %>" method="post">
-    <input type="text" name="title" placeholder="Title" value="<%= post.title %>" required>
-    <textarea name="content" placeholder="Content" required><%= post.content %></textarea>
-    <button type="submit">Update</button>
-  </form>
-  <a href="/blog">Back to Blog</a>
+  <div class="container">
+    <header class="header">
+      <h1 class="main-title">Edit Post</h1>
+    </header>
+    
+    <main class="main-content">
+      <form class="post-form" action="/blog/edit/<%= post._id %>" method="post">
+        <div class="form-group">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" id="title" name="title" class="form-input" placeholder="Enter post title" value="<%= post.title %>" required>
+        </div>
+        <div class="form-group">
+          <label for="content" class="form-label">Content</label>
+          <textarea id="content" name="content" class="form-textarea" placeholder="Write your post content here" required><%= post.content %></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Update Post</button>
+      </form>
+    </main>
+    
+    <footer class="footer">
+      <a href="/blog" class="back-link">Back to Blog</a>
+    </footer>
+  </div>
 </body>
 </html>
