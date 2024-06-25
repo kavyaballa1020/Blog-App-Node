@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/login.css">
   <title>Login</title>
 </head>
 <body>
-  <h1>Login</h1>
-  <form action="/auth/login" method="post">
-    <input type="text" name="username" placeholder="Username" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <button type="submit">Login</button>
-  </form>
-  <a href="/auth/register">Register</a>
+  <div class="container">
+    <h1 class="title">Login</h1>
+    <form class="login-form" action="/auth/login" method="post">
+      <input class="input-field" type="text" name="username" placeholder="Username" required>
+      <input class="input-field" type="password" name="password" placeholder="Password" required>
+      <button class="submit-btn" type="submit">Login</button>
+    </form>
+    <a class="register-link" href="/auth/register">Register</a>
+  </div>
 </body>
 </html>
