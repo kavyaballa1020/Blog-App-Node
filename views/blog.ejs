@@ -3,23 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/blog.css">
   <title>Blog</title>
 </head>
 <body>
-  <h1>Blog</h1>
-  <a href="/blog/create">Create New Post</a>
-  <a href="/auth/logout">Logout</a>
-  <ul>
-    <% posts.forEach(post => { %>
-      <li>
-        <h2><%= post.title %></h2>
-        <p><%= post.content %></p>
-        <a href="/blog/edit/<%= post._id %>">Edit</a>
-        <form action="/blog/delete/<%= post._id %>" method="post" style="display:inline;">
-          <button type="submit">Delete</button>
-        </form>
-      </li>
-    <% }) %>
-  </ul>
+  <header class="header">
+    <h1 class="main-title">Blog</h1>
+    <nav class="nav">
+      <a href="/blog/create" class="nav-link create-link">Create New Post</a>
+      <a href="/auth/logout" class="nav-link logout-link">Logout</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <ul class="post-list">
+      <% posts.forEach(post => { %>
+        <li class="post-item">
+          <article class="post">
+            <h2 class="post-title"><%= post.title %></h2>
+            <p class="post-content"><%= post.content %></p>
+            <div class="post-actions">
+              <a href="/blog/edit/<%= post._id %>" class="action-link edit-link">Edit</a>
+              <form action="/blog/delete/<%= post._id %>" method="post" class="delete-form">
+                <button type="submit" class="action-button delete-button">Delete</button>
+              </form>
+            </div>
+          </article>
+        </li>
+      <% }) %>
+    </ul>
+  </main>
 </body>
 </html>
