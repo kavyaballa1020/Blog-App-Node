@@ -3,35 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <link rel="stylesheet" href="/stylesheets/create-post.css">
-  <title>Create Post</title>
+  <title>Create Your Story</title>
 </head>
 <body>
   <div class="container">
     <header class="header">
-      <h1 class="main-title">Create Post</h1>
+      <h1 class="main-title">Create Your Story</h1>
+      <p class="subtitle">Share your thoughts with the world</p>
     </header>
     
     <main class="main-content">
       <form class="post-form" action="/blog/create" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label for="title" class="form-label">Title</label>
-          <input type="text" id="title" name="title" class="form-input" placeholder="Enter post title" required>
+          <input type="text" id="title" name="title" class="form-input" placeholder="Enter an engaging title" required>
         </div>
         <div class="form-group">
           <label for="content" class="form-label">Content</label>
-          <textarea id="content" name="content" class="form-textarea" placeholder="Write your post content here" required></textarea>
+          <textarea id="content" name="content" class="form-textarea" placeholder="Tell your story..." required></textarea>
         </div>
         <div class="form-group">
-          <label for="image" class="form-label">Image</label>
-          <input type="file" id="image" name="image" class="form-input">
+          <label for="image" class="form-label">Cover Image</label>
+          <div class="file-input-wrapper">
+            <input type="file" id="image" name="image" class="form-input file-input" accept="image/*">
+            <label for="image" class="file-input-label">
+              <i class="fas fa-cloud-upload-alt"></i> Choose an image
+            </label>
+          </div>
         </div>
-        <button type="submit" class="submit-btn">Create Post</button>
+        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Publish Story</button>
       </form>
     </main>
     
     <footer class="footer">
-      <a href="/blog" class="back-link">Back to Blog</a>
+      <a href="/blog" class="back-link"><i class="fas fa-arrow-left"></i> Back to Stories</a>
     </footer>
   </div>
 </body>
