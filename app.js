@@ -1,3 +1,5 @@
+// app.js
+
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
@@ -6,7 +8,6 @@ const path = require('path');
 const authRoutes = require('./routes/auth');
 const blogRoutes = require('./routes/blog');
 
-
 dotenv.config();
 
 const app = express();
@@ -14,7 +15,8 @@ const app = express();
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex: true // Add this line to ensure indexes are created
 }).then(() => console.log('Connected to MongoDB'))
   .catch(err => {
     console.error('Error connecting to MongoDB:', err.message);
@@ -24,7 +26,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 // Middleware
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json()); // Parse JSON bodies
+app.use(express.json());
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
