@@ -1,3 +1,5 @@
+// auth.js
+
 const express = require('express');
 const User = require('../models/user');
 const router = express.Router();
@@ -8,12 +10,20 @@ router.get('/register', (req, res) => {
 
 router.post('/register', async (req, res) => {
   const { username, password } = req.body;
+
   try {
-    const user = new User({ username, password });
-    await user.save();
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
+      return res.status(400).send('Username already exists');
+    }
+
+    const newUser = new User({ username, password });
+    await newUser.save();
+
     res.redirect('/auth/login');
   } catch (err) {
-    res.status(400).send('Error registering new user');
+    console.error('Error registering new user:', err);
+    res.status(500).send(`Error registering new user: ${err.message}`);
   }
 });
 
@@ -32,13 +42,15 @@ router.post('/login', async (req, res) => {
       res.status(400).send('Invalid credentials');
     }
   } catch (err) {
-    res.status(400).send('Error logging in');
+    console.error('Error logging in:', err);
+    res.status(500).send(`Error logging in: ${err.message}`);
   }
 });
 
 router.get('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) {
+      console.error('Error logging out:', err);
       return res.status(500).send('Error logging out');
     }
     res.redirect('/auth/login');
