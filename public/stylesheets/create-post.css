@@ -113,18 +113,8 @@ body {
   transition: all 0.3s ease;
 }
 
-.form-input:focus + .form-label,
-.form-textarea:focus + .form-label,
-.form-input:not(:placeholder-shown) + .form-label,
-.form-textarea:not(:placeholder-shown) + .form-label {
-  transform: translateY(-25px) scale(0.8);
-  color: var(--input-focus-color);
-}
 
-.form-input::placeholder,
-.form-textarea::placeholder {
-  color: transparent;
-}
+
 
 /* File input styling */
 .file-input-wrapper {
