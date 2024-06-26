@@ -4,17 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/register.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <title>Register</title>
 </head>
 <body>
   <div class="container">
-    <h1 class="title">Create an Account</h1>
+    <h1 class="title"><i class="fas fa-user-plus"></i> Create an Account</h1>
     <form class="register-form" action="/auth/register" method="post">
       <input class="input-field" type="text" name="username" placeholder="Username" required>
       <input class="input-field" type="password" name="password" placeholder="Password" required>
-      <button class="submit-btn" type="submit">Register</button>
+      <button class="submit-btn" type="submit"><i class="fas fa-check"></i> Register</button>
     </form>
-    <a class="login-link" href="/auth/login">Already have an account? Log in</a>
+    <div class="login-option">
+      <span>Already have an account?</span>
+      <a class="login-link" href="/auth/login"><i class="fas fa-sign-in-alt"></i> Log in here</a>
+    </div>
   </div>
 </body>
 </html>
+
