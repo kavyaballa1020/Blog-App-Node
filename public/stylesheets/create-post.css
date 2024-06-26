@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 :root {
-  --primary-color: #5b4cc7;    /* Darker shade of purple */
-  --secondary-color: #8a7eed;  /* Darker lavender */
-  --accent-color: #e84393;     /* Darker pink */
-  --background-color: #e6e6e6; /* Darker off-white */
-  --text-color: #1a1a1a;       /* Darker text color */
-  --input-background: #f2f2f2; /* Slightly darker input background */
-  --input-border: #c5cfd6;     /* Darker input border */
-  --input-focus-color: #5294c7; /* Darker focus color */
+  --primary-color: #5b4cc7;
+  --secondary-color: #8a7eed;
+  --accent-color: #e84393;
+  --background-color: #e6e6e6;
+  --text-color: #1a1a1a;
+  --input-background: #f2f2f2;
+  --input-border: #c5cfd6;
+  --input-focus-color: #5294c7;
 }
 
 * {
@@ -32,6 +32,7 @@ body {
   width: 100%;
   max-width: 800px;
   padding: 2rem;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .header {
@@ -63,8 +64,11 @@ body {
 }
 
 .form-label {
-  display: block;
-  margin-bottom: 0.5rem;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: var(--input-background);
+  padding: 0 0.5rem;
   font-weight: 600;
   color: var(--primary-color);
   transition: all 0.3s ease;
@@ -85,13 +89,15 @@ body {
 .form-textarea:focus {
   outline: none;
   border-color: var(--input-focus-color);
-  box-shadow: 0 0 0 4px rgba(116, 185, 255, 0.1);
+  box-shadow: 0 0 0 4px rgba(82, 148, 199, 0.1);
 }
 
 .form-input:focus + .form-label,
-.form-textarea:focus + .form-label {
-  color: var(--input-focus-color);
+.form-textarea:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label,
+.form-textarea:not(:placeholder-shown) + .form-label {
   transform: translateY(-25px) scale(0.8);
+  color: var(--input-focus-color);
 }
 
 .form-textarea {
@@ -99,24 +105,6 @@ body {
   resize: vertical;
 }
 
-/* Floating label effect */
-.form-group {
-  position: relative;
-}
-
-.form-label {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background-color: var(--input-background);
-  padding: 0 0.5rem;
-  transition: all 0.3s ease;
-}
-
-
-
-
-/* File input styling */
 .file-input-wrapper {
   position: relative;
   overflow: hidden;
@@ -144,7 +132,6 @@ body {
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 100%;
 }
 
 .file-input-label:hover {
@@ -156,16 +143,12 @@ body {
   margin-right: 0.5rem;
 }
 
-/* Add a nice hover effect to all inputs */
-.form-input:hover,
-.form-textarea:hover,
-.file-input-label:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+.preview-image {
+  max-width: 100%;
+  margin-top: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-
-
 
 .submit-btn {
   display: block;
@@ -206,6 +189,11 @@ body {
   transform: translateY(-2px);
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Custom Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 10px;
@@ -224,20 +212,32 @@ body {
   background: var(--primary-color);
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary-color) var(--input-background);
 }
 
-.container {
-  animation: fadeIn 0.5s ease-out;
+/* Custom styling for textarea scrollbar */
+.form-textarea {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary-color) var(--input-background);
 }
 
-.form-group {
-  transition: transform 0.3s ease;
+.form-textarea::-webkit-scrollbar {
+  width: 8px;
 }
 
-.form-group:hover {
-  transform: translateY(-5px);
+.form-textarea::-webkit-scrollbar-track {
+  background: var(--input-background);
+  border-radius: 4px;
+}
+
+.form-textarea::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 4px;
+}
+
+.form-textarea::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
 }
