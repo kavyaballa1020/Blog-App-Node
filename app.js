@@ -6,6 +6,7 @@ const path = require('path');
 const authRoutes = require('./routes/auth');
 const blogRoutes = require('./routes/blog');
 
+
 dotenv.config();
 
 const app = express();
@@ -50,6 +51,7 @@ app.use((err, req, res, next) => {
 
 // Start server
 const PORT = process.env.PORT || 3000;
+const BASE_URL = `http://localhost:${PORT}`;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on ${BASE_URL}`);
 });
