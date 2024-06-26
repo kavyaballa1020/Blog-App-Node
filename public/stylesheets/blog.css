@@ -119,6 +119,7 @@ body {
   margin-top: 0;
   color: var(--secondary-color);
   font-size: 1.4rem;
+  text-transform: uppercase;
 }
 
 .post-image {
