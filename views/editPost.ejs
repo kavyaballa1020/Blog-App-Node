@@ -4,38 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <link rel="stylesheet" href="/stylesheets/edit-post.css">
-  <title>Edit Post</title>
+  <title>Edit Your Story</title>
 </head>
 <body>
   <div class="container">
     <header class="header">
-      <h1 class="main-title">Edit Your Post</h1>
+      <h1 class="main-title">Edit Your Story</h1>
+      <p class="subtitle">Refine your thoughts and inspire the world</p>
     </header>
     
     <main class="main-content">
       <form class="post-form" action="/blog/edit/<%= post._id %>" method="post" enctype="multipart/form-data">
         <div class="form-group">
-          <label for="title" class="form-label">Title</label>
           <input type="text" id="title" name="title" class="form-input" placeholder="Enter an engaging title" value="<%= post.title %>" required>
+          <label for="title" class="form-label">Title</label>
         </div>
         <div class="form-group">
-          <label for="content" class="form-label">Content</label>
           <textarea id="content" name="content" class="form-textarea" placeholder="Share your thoughts here..." required><%= post.content %></textarea>
+          <label for="content" class="form-label">Content</label>
         </div>
         <div class="form-group">
-          <label for="image" class="form-label">Featured Image</label>
-          <input type="file" id="image" name="image" class="form-input form-input-file" accept="image/*">
+          <div class="file-input-wrapper">
+            <input type="file" id="image" name="image" class="form-input file-input" accept="image/*">
+            <label for="image" class="file-input-label">
+              <i class="fas fa-cloud-upload-alt"></i> Choose new image
+            </label>
+          </div>
           <% if (post.image) { %>
             <img src="<%= post.image %>" alt="Post Image" class="preview-image">
           <% } %>
         </div>
-        <button type="submit" class="submit-btn">Update Post</button>
+        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Update Story</button>
       </form>
     </main>
     
     <footer class="footer">
-      <a href="/blog" class="back-link">Back to Blog</a>
+      <a href="/blog" class="back-link"><i class="fas fa-arrow-left"></i> Back to Stories</a>
     </footer>
   </div>
 </body>
