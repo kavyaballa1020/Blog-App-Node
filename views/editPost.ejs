@@ -3,30 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/edit-post.css">
   <title>Edit Post</title>
 </head>
 <body>
   <div class="container">
     <header class="header">
-      <h1 class="main-title">Edit Post</h1>
+      <h1 class="main-title">Edit Your Post</h1>
     </header>
     
     <main class="main-content">
       <form class="post-form" action="/blog/edit/<%= post._id %>" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label for="title" class="form-label">Title</label>
-          <input type="text" id="title" name="title" class="form-input" placeholder="Enter post title" value="<%= post.title %>" required>
+          <input type="text" id="title" name="title" class="form-input" placeholder="Enter an engaging title" value="<%= post.title %>" required>
         </div>
         <div class="form-group">
           <label for="content" class="form-label">Content</label>
-          <textarea id="content" name="content" class="form-textarea" placeholder="Write your post content here" required><%= post.content %></textarea>
+          <textarea id="content" name="content" class="form-textarea" placeholder="Share your thoughts here..." required><%= post.content %></textarea>
         </div>
         <div class="form-group">
-          <label for="image" class="form-label">Image</label>
-          <input type="file" id="image" name="image" class="form-input">
+          <label for="image" class="form-label">Featured Image</label>
+          <input type="file" id="image" name="image" class="form-input form-input-file" accept="image/*">
           <% if (post.image) { %>
-            <img src="<%= post.image %>" alt="Post Image" style="width: 100px; height: auto;">
+            <img src="<%= post.image %>" alt="Post Image" class="preview-image">
           <% } %>
         </div>
         <button type="submit" class="submit-btn">Update Post</button>
