@@ -20,7 +20,7 @@
     "multer": "^2.0.0",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^8.0.0"
+    "passport-local-mongoose": "^9.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
